@@ -1,8 +1,8 @@
 // plugin import
-import './sliders/slider'
-import './modals/modals'
-import './datepiker/air-datepiker'
-import './sliders/range-slider'
+// import './sliders/slider'
+// import './modals/modals'
+// import './datepiker/air-datepiker'
+// import './sliders/range-slider'
 
 // WORK IMPORT
 import './common/common'
