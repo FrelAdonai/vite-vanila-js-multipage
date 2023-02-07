@@ -1,0 +1,35 @@
+@mixin gen-fonts($nameFont, $fonts-list, $prefix) {
+    @each $name, $font in $fonts-list {
+        @font-face {
+            font-family: "#{$nameFont}";
+            font-display: swap;
+            src: url("../fonts/#{$name}.ttf");
+            font-display: block;
+            font-style: normal;
+            font-weight: #{$font};
+        }
+    }
+    :root {
+        --font-#{$prefix}: "#{$nameFont}";
+        @each $name, $font in $fonts-list {
+            --weight-#{$prefix}-#{$font}: #{$font};
+        }
+    }
+}
+
+@include gen-fonts(
+    $nameFont: "OpenSans",
+
+    $fonts-list: (
+        "OpenSans-Bold": 700,
+        "OpenSans-Medium": 500,
+        "OpenSans-Regular": 400,
+    ),
+    $prefix: "m"
+);
+
+$main-f: var(--font-m);
+
+$font-w-700: var(--weight-m-700);
+$font-w-500: var(--weight-m-500);
+$font-w-400: var(--weight-m-400);

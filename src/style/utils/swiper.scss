@@ -1,0 +1,14 @@
+@import "swiper/css";
+
+.swiper {
+    width: 100%;
+
+    opacity: 0;
+    &.swiper-initialized {
+        opacity: 1;
+        transition: 0.3s all ease;
+    }
+    & .swiper-slide {
+        height: auto;
+    }
+}

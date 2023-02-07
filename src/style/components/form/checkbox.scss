@@ -1,0 +1,54 @@
+.checkbox {
+    &__label {
+        display: flex;
+        align-items: center;
+
+        width: max-content;
+        & p {
+            margin-left: 10px;
+
+            font-size: 16px;
+            color: $black;
+
+            transition: 0.3s all ease;
+        }
+    }
+
+    &__input {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        display: none;
+
+        &:checked + .checkbox__content {
+            background: $black;
+
+            & svg {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        width: 20px;
+        height: 20px;
+
+        border: 1px solid $black;
+        transition: 0.3s all ease;
+
+        & svg {
+            transition: 0.3s all ease;
+            opacity: 0;
+
+            width: 70%;
+            height: 70%;
+
+            object-fit: contain;
+        }
+    }
+}

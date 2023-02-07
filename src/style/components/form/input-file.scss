@@ -1,0 +1,111 @@
+.file {
+    display: flex;
+    flex-direction: column;
+
+    &__label {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: max-content;
+        height: 40px;
+
+        padding: 0 20px;
+
+        border: 1px solid rgba($black, 0.1);
+        transition: 0.3s all ease;
+
+        &:hover {
+            border-color: $black;
+        }
+
+        & p {
+            font-size: 16px;
+            color: $black;
+
+            transition: 0.3s all ease;
+        }
+    }
+
+    &__input {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        display: none;
+    }
+
+    &__img-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 5px;
+        width: 100%;
+
+        margin-top: 10px;
+    }
+
+    &__card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    &__card-btn {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        width: 30px;
+        height: 30px;
+
+        background: rgba($black, 0.3);
+        color: $white;
+    }
+
+    &__card-img {
+        @include imgAdaptive(100%, null, 100, cover);
+    }
+
+    &__card-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        height: 200px;
+
+        padding: 10px;
+        background: grey;
+        color: $white;
+    }
+
+    &__card-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        padding: 4px;
+
+        background: rgba($black, 0.3);
+
+        color: $white;
+        font-size: 14px;
+    }
+
+    &__card-name {
+    }
+
+    &__card-size {
+        margin-top: 4px;
+    }
+
+    &__error {
+        color: $error;
+    }
+}

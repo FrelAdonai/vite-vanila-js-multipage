@@ -1,0 +1,50 @@
+// arrow slider
+.arrow-slider-container {
+    display: flex;
+}
+
+.arrow-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid $black;
+
+    pointer-events: painted;
+
+    overflow: hidden;
+    transition: 0.3s background, 0.3s border-color;
+    transition-timing-function: ease;
+
+    & svg {
+        width: 100%;
+        height: 100%;
+
+        fill: $black;
+        transition: 0.3s transform, 0.3s fill;
+        transition-timing-function: ease;
+    }
+
+    &:active {
+        & svg {
+            transform: scale(0.9);
+        }
+    }
+
+    &:hover {
+        background: $black;
+        border-color: $black;
+
+        & svg {
+            fill: $white;
+        }
+    }
+
+    &.arrow-disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}

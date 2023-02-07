@@ -1,0 +1,75 @@
+// button
+.btn {
+    z-index: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 300px;
+    padding: 1rem 2em;
+
+    border: 1px solid transparent;
+    will-change: transform;
+
+    color: #fff;
+    font-size: 16px;
+    font-family: $main-f;
+    font-weight: $font-w-700;
+
+    overflow: hidden;
+    user-select: none;
+    transition: 0.3s background, 0.3s border-color, 0.3s color;
+    transition-timing-function: ease;
+
+    &-accent-border {
+        background: transparent !important;
+        color: inherit;
+        border-color: inherit;
+    }
+
+    &-white {
+        @extend .btn;
+        background: $white;
+        border-color: $white;
+        color: $white;
+
+        &:not(.btn-accent-border) {
+            color: $black;
+
+            &:hover {
+                background: transparent !important;
+                border-color: $white;
+                color: $white;
+            }
+        }
+
+        &:hover {
+            background: $white !important;
+            border-color: $white;
+            color: $black;
+        }
+    }
+
+    &-black {
+        @extend .btn;
+        background: $black;
+        border-color: $black;
+        color: $black;
+
+        &:not(.btn-accent-border) {
+            color: $white;
+            &:hover {
+                background: transparent !important;
+                border-color: $black;
+                color: $black;
+            }
+        }
+
+        &:hover {
+            background: $black !important;
+            border-color: $black;
+            color: $white;
+        }
+    }
+}

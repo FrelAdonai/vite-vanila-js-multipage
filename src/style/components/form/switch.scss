@@ -1,0 +1,38 @@
+.switch {
+    &__label {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 50px;
+        height: 20px;
+
+        border: 1px solid $black;
+
+        border-radius: 3.125rem;
+    }
+
+    &__input {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        display: none;
+
+        &:checked + .switch__content {
+            left: calc(100% - 18px);
+            background: green;
+        }
+    }
+
+    &__content {
+        position: absolute;
+        left: 2px;
+        display: block;
+        width: 16px;
+        height: 16px;
+
+        border-radius: 50%;
+        background: $black;
+
+        transition: 0.3s all ease;
+    }
+}

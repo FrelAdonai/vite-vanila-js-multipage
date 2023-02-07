@@ -1,0 +1,98 @@
+// block
+$content-width: 1300;
+
+%block-tmp-row {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+}
+
+%block-tmp-col {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+}
+
+// flex
+.flex\:row {
+    @extend %block-tmp-row;
+
+    &-hd {
+        @extend .flex\:row;
+        max-width: 1920px;
+    }
+
+    &-max {
+        @extend .flex\:row;
+        max-width: #{$content-width + 40}px;
+        padding: 0 20px;
+    }
+}
+
+.flex\:col {
+    @extend %block-tmp-col;
+
+    &-hd {
+        @extend .flex\:col;
+        max-width: 1920px;
+    }
+
+    &-max {
+        @extend .flex\:col;
+        max-width: #{$content-width + 40}px;
+        padding: 0 20px;
+    }
+}
+
+// grid
+.grid\:fr {
+    display: grid;
+    width: 100%;
+    grid-gap: 24px;
+
+    &-1 {
+        @extend .grid\:fr;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    &-2 {
+        @extend .grid\:fr;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    &-3 {
+        @extend .grid\:fr;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    &-4 {
+        @extend .grid\:fr;
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+// margin - padding
+@for $i from 1 to 21 {
+    $side: $i * 10;
+
+    //  padding
+    .pad {
+        &-tb-#{$side} {
+            @include adaptiv-value("padding-top", $side, 50, 1);
+            @include adaptiv-value("padding-bottom", $side, 50, 1);
+        }
+
+        &-t-#{$side} {
+            @include adaptiv-value("padding-top", $side, 50, 1);
+        }
+
+        &-b-#{$side} {
+            @include adaptiv-value("padding-bottom", $side, 50, 1);
+        }
+    }
+}

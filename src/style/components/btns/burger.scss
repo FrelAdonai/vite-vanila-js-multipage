@@ -1,0 +1,120 @@
+%burger-btn {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 28px;
+
+    will-change: transform;
+    transition: 0.3s all linear;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+    }
+
+    &::before {
+        transform: translateY(-10px);
+    }
+
+    &::after {
+        transform: translateY(10px);
+    }
+
+    &::before,
+    &::after,
+    & .burger-btn__item {
+        width: 100%;
+        height: 3px;
+
+        background: $black;
+        will-change: transform;
+        pointer-events: none;
+        border-radius: 10px;
+        transition: 0.3s all ease;
+    }
+}
+
+.burger-btn_cross {
+    @extend %burger-btn;
+
+    & .burger-btn__item {
+        width: 60%;
+    }
+
+    &.active {
+        &::before {
+            transform: translateY(0px) rotate(45deg);
+        }
+
+        &::after {
+            transform: translateY(0) rotate(-45deg);
+        }
+
+        & .burger-btn__item {
+            transform: translateX(150%);
+            opacity: 0;
+        }
+    }
+}
+
+.burger-btn_cross-deg {
+    @extend %burger-btn;
+
+    & .burger-btn__item {
+        width: 100%;
+    }
+
+    &.active {
+        &::before {
+            transform: translateY(0px) rotate(225deg);
+        }
+
+        &::after {
+            transform: translateY(0) rotate(-225deg);
+        }
+
+        & .burger-btn__item {
+            transform: translateX(150%);
+            opacity: 0;
+        }
+    }
+}
+
+.burger-btn_short {
+    @extend %burger-btn;
+    &::before {
+        width: 50%;
+    }
+
+    &::after {
+        width: 30%;
+    }
+
+    & .burger-btn__item {
+        width: 100%;
+        transform: translateX(0);
+    }
+
+    &.active {
+        &::before {
+            width: 100%;
+            transform: translateY(0px) rotate(45deg);
+        }
+
+        &::after {
+            width: 100%;
+            transform: translateY(0) rotate(315deg);
+        }
+
+        & .burger-btn__item {
+            transform: translateX(150%);
+            opacity: 0;
+        }
+    }
+}

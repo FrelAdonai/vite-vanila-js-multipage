@@ -1,0 +1,156 @@
+// ---------------- максимальная ширина контента
+
+// ---------------- Adaptive property
+
+$maxWidth: 1920;
+$maxWidthContainer: 1536;
+
+@mixin adaptiv-value($property, $startSize, $minSize, $type) {
+    $addSize: $startSize - $minSize;
+    @if $type==1 {
+        #{$property}: $startSize + px;
+        @media screen and (max-width: #{$maxWidthContainer + px}) {
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+        }
+    }
+}
+
+@mixin adaptiv-text-rem($property, $startSize, $minSize, $type) {
+    $addSize: $startSize - $minSize;
+    @if $type==1 {
+        #{$property}: $startSize + rem;
+        @media screen and (max-width: #{$maxWidthContainer + px}) {
+            #{$property}: calc(#{$minSize + rem} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+        }
+    }
+}
+
+//------------------ Center absolute
+@mixin сentering-xy() {
+    position: absolute !important;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin сentering-x() {
+    position: absolute !important;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin сentering-y() {
+    position: absolute !important;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+//------------------ Center absolute
+@mixin customScroll($color-line, $color-thumb) {
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: $color-line;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $color-thumb;
+    }
+
+    scrollbar-color: $color-thumb $color-line;
+    scrollbar-width: thin;
+}
+
+//------------------ Image
+@mixin imgAdaptive($width, $width-max, $padding, $fit) {
+    position: relative;
+
+    width: #{$width};
+    max-width: #{$width-max};
+    height: max-content;
+
+    &::before {
+        content: "";
+        display: block;
+        width: 100%;
+        padding-bottom: #{$padding + "%"};
+    }
+
+    & img,
+    & svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: $fit;
+    }
+}
+
+//------------------ Media
+@mixin _1700 {
+    @media screen and (max-width: 1700px) {
+        @content;
+    }
+}
+@mixin _1500 {
+    @media screen and (max-width: 1500px) {
+        @content;
+    }
+}
+@mixin _1366 {
+    @media screen and (max-width: 1366px) {
+        @content;
+    }
+}
+@mixin _1250 {
+    @media screen and (max-width: 1250px) {
+        @content;
+    }
+}
+@mixin _1170 {
+    @media screen and (max-width: 1170px) {
+        @content;
+    }
+}
+@mixin _1024 {
+    @media screen and (max-width: 1024px) {
+        @content;
+    }
+}
+@mixin _979 {
+    @media screen and (max-width: 979px) {
+        @content;
+    }
+}
+@mixin _850 {
+    @media screen and (max-width: 850px) {
+        @content;
+    }
+}
+@mixin _768 {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+@mixin _600 {
+    @media screen and (max-width: 600px) {
+        @content;
+    }
+}
+@mixin _480 {
+    @media screen and (max-width: 480px) {
+        @content;
+    }
+}
+@mixin _350 {
+    @media screen and (max-width: 350px) {
+        @content;
+    }
+}

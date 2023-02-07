@@ -1,0 +1,27 @@
+{
+    "name": "vite-project",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "glob": "^8.1.0",
+        "path": "^0.12.7",
+        "prettier": "2.8.3",
+        "vite": "^4.0.0",
+        "vite-plugin-handlebars": "^1.6.0",
+        "vite-plugin-imagemin": "^0.6.1"
+    },
+    "dependencies": {
+        "@fancyapps/ui": "^4.0.31",
+        "air-datepicker": "^3.3.5",
+        "eslint": "^8.33.0",
+        "nouislider": "^15.7.0",
+        "sass": "^1.57.1",
+        "swiper": "^8.4.7"
+    }
+}
