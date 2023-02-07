@@ -25,6 +25,9 @@ export const validations = (arg) => {
                 case 'uz':
                     tooltip.textContent = arg.inputAnsverUz
                     break
+                case 'ru':
+                    tooltip.textContent = arg.inputAnsverRu
+                    break
                 default:
                     tooltip.textContent = arg.inputAnsverRu
                     break
@@ -47,19 +50,12 @@ export const validations = (arg) => {
     function _tooltipShowOnese(field) {
         let tooltip = field.parentElement.querySelector('.text-empty')
 
-        if (field.value == '' || field.value.length <= 0) {
-            tooltip.classList.add('show')
-
-            tooltip.addEventListener('transitionend', () => {
-                tooltip.classList.add('anim')
-            })
-
-            tooltip.addEventListener('animationend', () => {
-                tooltip.classList.remove('anim')
-            })
-        } else {
-            tooltip.classList.remove('show')
-            tooltip.classList.remove('anim')
+        if (tooltip) {
+            if (field.value == '' || field.value.length <= 0) {
+                tooltip.classList.add('show')
+            } else {
+                tooltip.classList.remove('show')
+            }
         }
     }
 
