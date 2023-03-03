@@ -13,18 +13,71 @@
 
     <main class="main">
 
-        <section class="flex:col pad-tb-50">
+        <div class="flex:col pad-tb-50">
             <div class="flex:col-max">
-                <form class="form" action="">
+
+                <form class="form valid_js" method="POST" id="feedback" data-lang="ru">
+
                     <div class="input">
-                        <label class="input__label" for="">Label</label>
-                        <input class="input__field" type="tel" placeholder="Телефон">
-
-
+                        <label class="input__label" for="">Телефон</label>
+                        <input class="input__field phone_js" type="text" placeholder="Телефон" data-empty="Обязательно для заполнения">
                     </div>
+
+                    <div class="input">
+                        <label class="input__label" for="">Телефон</label>
+                        <input class="input__field" type="text" placeholder="Телефон" data-empty="Обязательно для заполнения">
+                    </div>
+
+                    <div class="input">
+                        <label class="input__label" for="">Телефон</label>
+                        <input class="input__field" type="text" placeholder="Телефон" data-empty="Обязательно для заполнения">
+                    </div>
+
+                    <div class="input">
+                        <label class="input__label" for="">Почта</label>
+                        <input class="input__field" type="text" placeholder="E-mai" data-empty="Обязательно для заполнения" data-mail="Введите E-mail корректно">
+                    </div>
+
+                    <div class="input">
+                        <label class="input__label" for="">Почта</label>
+                        <input class="input__field" type="text" placeholder="E-mai" data-empty="Обязательно для заполнения" data-mail="Введите E-mail корректно">
+                    </div>
+
+                    <div class="checkbox">
+                        <label class="checkbox__label">
+                            <input class="checkbox__input" type="checkbox">
+
+                            <span class="checkbox__content">
+                                <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.0806 0L5.75806 9.20833L1.91935 5.41667L0
+                                        7.3125L5.75806 13L17 1.89583L15.0806 0Z" fill="white" />
+                                </svg>
+                            </span>
+
+                            <p>Выбрать</p>
+                        </label>
+                    </div>
+
+                    <div class="checkbox">
+                        <label class="checkbox__label">
+                            <input class="checkbox__input" type="checkbox">
+
+                            <span class="checkbox__content">
+                                <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.0806 0L5.75806 9.20833L1.91935 5.41667L0
+                                            7.3125L5.75806 13L17 1.89583L15.0806 0Z" fill="white" />
+                                </svg>
+                            </span>
+
+                            <p>Выбрать</p>
+                        </label>
+                    </div>
+
+                    <button class="btn-black" type="submit">Submit</button>
                 </form>
+
             </div>
-        </section>
+        </div>
 
     </main>
 

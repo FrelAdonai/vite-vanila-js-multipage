@@ -8,6 +8,7 @@ import viteImagemin from 'vite-plugin-imagemin'
 
 export default defineConfig({
     root: path.resolve(__dirname, 'src'),
+    base: './',
 
     plugins: [
         handlebars({
@@ -47,34 +48,31 @@ export default defineConfig({
     ],
 
     build: {
-        base: './',
         emptyOutDir: path.resolve(__dirname, 'dist'),
         outDir: path.resolve(__dirname, 'dist'),
+        sourcemap: false,
+        minify: true,
 
         rollupOptions: {
             output: {
-                chunkFileNames: 'assets/js/[name].js',
+                chunkFileNames: 'js/[name].js',
+                entryFileNames: 'js/[name].js',
 
-                assetFileNames: ({ name }) => {
-                    if (/\.(gif|jpeg|jpg|png|svg)$/.test(name ?? '')) {
-                        return 'assets/images/[name][extname]'
+                assetFileNames: (assetInfo) => {
+                    let info = assetInfo.name.split('.')
+                    let extType = info[info.length - 1]
+
+                    if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
+                        extType = 'images'
+                    } else if (/ttf|woff2/.test(extType)) {
+                        extType = 'fonts'
                     }
-
-                    if (/\.(ttf)$/.test(name ?? '')) {
-                        return 'assets/fonts/[name][extname]'
-                    }
-
-                    if (/\.css$/.test(name ?? '')) {
-                        return 'assets/css/main[extname]'
-                    }
-
-                    return 'assets/[name]-[hash][extname]'
+                    return `${extType}/[name][extname]`
                 },
             },
 
             input: {
                 index: path.resolve(__dirname, 'src/index.html'),
-                about: path.resolve(__dirname, 'src/about.html'),
             },
         },
     },

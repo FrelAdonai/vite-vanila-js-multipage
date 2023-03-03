@@ -1,10 +1,12 @@
-@import "checkbox";
-@import "switch";
-@import "radio";
+@import "input-checkbox";
+@import "input-switch";
+@import "input-radio";
 @import "select";
 @import "input";
 @import "input-file";
-@import "error";
+@import "input-range";
+@import "input-error";
+// @import "input-date";
 
 .form {
     position: relative;
