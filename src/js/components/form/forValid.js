@@ -102,9 +102,14 @@ export const validateForm = (form) => {
         // инпуты почты
         mailEmptyArr.forEach((el) => {
             el.onblur = function () {
-                if (el.getAttribute('data-mail') && !el.value.includes('@')) {
+                if (el.getAttribute('data-mail') && !el.value.includes('@') && el.value != '') {
                     el.parentElement.classList.add('input-error')
                     _creatAtention(el.parentElement, el, 'data-mail')
+                }
+
+                if (el.value.replace(/ /g, '').length < 1) {
+                    el.parentElement.classList.add('input-error')
+                    _creatAtention(el.parentElement, el, 'data-empty')
                 }
             }
         })
