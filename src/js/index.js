@@ -6,9 +6,8 @@ import './modals/modals'
 
 // WORK IMPORT
 import './common/common'
+import './components/form/all-hendler-form'
 
 import { tabs } from './components/tabs'
-tabs()
 
-import { form } from './components/form/form.js'
-form()
+tabs()

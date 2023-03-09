@@ -71,6 +71,14 @@ export const customSelect = (arg) => {
         })
     }
 
+    function _keyWordListClose(selectorSelect) {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                _selectNodeSelectorRemove(selectorSelect)
+            }
+        })
+    }
+
     function _delegationItemHendler(selectorSelect, selectorField) {
         document.addEventListener('click', (e) => {
             let target = e.target.closest('.select-custom__list-item')
@@ -124,6 +132,7 @@ export const customSelect = (arg) => {
     }
 
     _delegationFieldShow(selectorSelect, selectorField, selectorList)
+    _keyWordListClose(selectorSelect)
     _delegationFiledListHide(selectorSelect, selectorField, selectorList)
     _delegationItemHendler(selectorSelect, selectorField)
 }
