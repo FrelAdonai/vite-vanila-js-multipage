@@ -15,14 +15,7 @@
 
         <section class="flex:col pad-tb-50">
             <div class="flex:col-max">
-                <form class="form" action="">
-                    <div class="input">
-                        <label class="input__label" for="">Label</label>
-                        <input class="input__field" type="tel" placeholder="Телефон">
 
-
-                    </div>
-                </form>
             </div>
         </section>
 
@@ -30,6 +23,24 @@
 
     {{> footer }}
     {{> scripts }}
+
+    <script>
+        document.addEventListener('click', (e) => {
+            let target = e.target.closest('[type="submit"]')
+
+            if (target) {
+                if (target.getAttribute('dat-valid-succes') == 'true') {
+                    fetch('https://fincomrent.uz/', {
+                        method: 'POST',
+                        body: new FormData(document.getElementById('form'))
+                    })
+                        .then((response) => console.log(response))
+                        .then((data) => console.log(data))
+                        .catch((error) => console.log("request failed", error));
+                }
+            }
+        })
+    </script>
 
 </body>
 

@@ -1,13 +1,25 @@
+import { inputPhoneMask } from './input-phone'
+
 export const validations = (arg) => {
+    inputPhoneMask()
+
     // helpers
     function _fieldsTypeText(arr) {
-        return Array.from(arr).filter((a) => a.type === 'text')
+        return Array.from(arr).filter((a) => a.getAttribute('data-required') === 'true')
     }
 
     function _fieldsTypeTextEmpty(arr) {
         return Array.from(arr)
-            .filter((a) => a.type === 'text')
-            .filter((x) => x.value === '' || x.value.length <= 0)
+            .filter((a) => a.getAttribute('data-required') === 'true')
+            .filter((a) => a.type != 'checkbox' && a.type != 'radio')
+            .filter((x) => x.value == '' || x.value.length <= 0)
+    }
+
+    function _fieldsTypeRadioCheckboxEmpty(arr) {
+        return Array.from(arr)
+            .filter((a) => a.getAttribute('data-required') === 'true')
+            .filter((a) => a.type == 'checkbox' && a.type != 'radio')
+            .filter((a) => a.checked == false)
     }
 
     // tooltip
@@ -42,12 +54,11 @@ export const validations = (arg) => {
 
         fields.forEach((field) => {
             let tooltip = field.parentElement.querySelector('.text-empty')
-
             tooltip.classList.add('show')
         })
     }
 
-    function _tooltipShowOnese(field) {
+    function _tooltipShowSingle(field) {
         let tooltip = field.parentElement.querySelector('.text-empty')
 
         if (tooltip) {
@@ -60,41 +71,91 @@ export const validations = (arg) => {
     }
 
     // inputs
-    function _addErrorFieldOnese(field) {
-        if (field.value == '' || field.value.length <= 0) {
-            field.parentElement.classList.add('input-error')
-        } else {
-            field.parentElement.classList.remove('input-error')
+    function _addErrorField(field) {
+        switch (field.type) {
+            case 'checkbox':
+                if (field.checked != true) {
+                    field.parentElement.classList.add('input-error')
+                }
+                break
+
+            default:
+                if (field.value == '' || field.value.length <= 0) {
+                    field.parentElement.classList.add('input-error')
+                }
+
+                break
+        }
+    }
+
+    function _removeError(field) {
+        switch (field.type) {
+            case 'checkbox':
+                if (field.checked == true) {
+                    field.parentElement.classList.remove('input-error')
+                }
+                break
+
+            default:
+                if (field.value != '' || field.value.length > 0) {
+                    field.parentElement.classList.remove('input-error')
+                }
+
+                break
         }
     }
 
     function _addErrorFields(arr) {
-        let fields = _fieldsTypeTextEmpty(arr)
-
-        fields.forEach((field) => {
+        arr.forEach((field) => {
             field.parentElement.classList.add('input-error')
         })
     }
 
-    const formNode = document.querySelectorAll('form')
+    const formNode = document.querySelectorAll('.form-validation_js')
 
     formNode.forEach((form) => {
         let lang = form.getAttribute('data-lang')
         let fields = form.querySelectorAll('input')
+        let btn = form.querySelector('[type="submit"]')
+        btn.setAttribute('dat-valid-succes', 'false')
 
         _crateTooltip(fields, lang)
 
         form.addEventListener('submit', (e) => {
             e.preventDefault()
 
-            _addErrorFields(fields)
+            _addErrorFields(_fieldsTypeTextEmpty(fields))
+            _addErrorFields(_fieldsTypeRadioCheckboxEmpty(fields))
             _tooltipShow(fields)
         })
 
         fields.forEach((field) => {
+            field.addEventListener('blur', (e) => {
+                _addErrorField(field)
+                _removeError(field)
+                _tooltipShowSingle(field)
+
+                let allFields = [..._fieldsTypeTextEmpty(fields), ..._fieldsTypeRadioCheckboxEmpty(fields)]
+
+                if (allFields.length <= 0) {
+                    btn.setAttribute('dat-valid-succes', 'true')
+                } else {
+                    btn.setAttribute('dat-valid-succes', 'false')
+                }
+            })
+
             field.addEventListener('input', (e) => {
-                _addErrorFieldOnese(field)
-                _tooltipShowOnese(field)
+                _addErrorField(field)
+                _removeError(field)
+                _tooltipShowSingle(field)
+
+                let allFields = [..._fieldsTypeTextEmpty(fields), ..._fieldsTypeRadioCheckboxEmpty(fields)]
+
+                if (allFields.length <= 0) {
+                    btn.setAttribute('dat-valid-succes', 'true')
+                } else {
+                    btn.setAttribute('dat-valid-succes', 'false')
+                }
             })
         })
     })

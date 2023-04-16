@@ -1,5 +1,6 @@
 // select
 .select-custom {
+    z-index: 2;
     position: relative;
     display: flex;
     align-items: center;
@@ -23,21 +24,21 @@
         content: "";
         position: absolute;
         top: 50%;
-        transform: translateY(-50%);
         right: 20px;
 
-        width: 14px;
-        height: 14px;
+        width: 24px;
+        height: 24px;
 
         background-image: url('data:image/svg+xml, \
-        <svg   viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg"> \
-            <path d="M2.62268e-07 18.5L7.5 11L1.57361e-06 3.5L1.5 0.499999L12 11L1.5 21.5L2.62268e-07 18.5Z" fill="%23242e40"></path> \
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="%23242e40"> \
+            <path xmlns="http://www.w3.org/2000/svg" d="m24 30.75-12-12 2.15-2.15L24 26.5l9.85-9.85L36 18.8Z"/> \
         </svg>');
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
         pointer-events: none;
 
+        transform: translateY(-50%);
         transition: 0.3s all ease;
     }
 
